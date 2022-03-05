@@ -1,10 +1,37 @@
 # coding-self-learing
 # Structured Query Language (SQL)
 Tables with rows and colums that can be access with queries.
-To actully run SQL server on windows you need to install two tools:
-1. SQL server
-2. SQL Server Management<br>
-[Here is a guid on how to download these](https://www.youtube.com/watch?v=RSlqWnP-Dy8&t=28s)<br>
+## Setup
+Requiremnets:
+1. MySQL installer
+    1. Workbench
+    2. Server
+    3. command line (to test it, and Debug)<br>
+
+These [docs](https://dev.mysql.com/doc/mysql-getting-started/en/#mysql-getting-started-connecting)
+shows how to use the CLI.
+```powershell
+cd C:\Program Files\MySQL\MySQL Server 8.0\bin
+```
+```SQL
+# see all users
+SELECT USER FROM MySQL.user;
+CREATE DATABASE DB
+CREATE USER 'reem'@'localhost' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON DB.* TO 'reem'@'localhost';
+FLUSH PRIVILEGES;
+DROP USER 'reem'@'localhost';
+```
+
+```SQL
+# delete a table
+DROP TABLE tablename
+# generate commands to delete all tables
+SELECT concat('DROP TABLE IF EXISTS `', table_name, '`;')
+FROM information_schema.tables
+WHERE table_schema = 'MyDatabaseName';
+```
+Then start a database server using the workbench.
 Enter the sql server
 ```Python
 def create_db_connection(host_name, user_name, user_password, db_name):
@@ -130,3 +157,14 @@ ssl_args = {'ssl_ca': ca_path}
 engine = create_engine("mysql+mysqlconnector://<user>:<pass>@<addr>/<schema>",
                         connect_args=ssl_args)
 ```
+
+# [logger](https://docs.python.org/3/howto/logging.html)
+```
+import logging
+logging.info()
+logging.warning()
+logging.error()
+logging.exception()
+logging.critical()
+```
+

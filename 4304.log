@@ -1,0 +1,47 @@
+6522:C 06 Mar 2022 22:37:53.962 # oO0OoO0OoO0Oo Redis is starting oO0OoO0OoO0Oo
+6522:C 06 Mar 2022 22:37:53.963 # Redis version=6.2.6, bits=64, commit=00000000, modified=0, pid=6522, just started
+6522:C 06 Mar 2022 22:37:53.963 # Configuration loaded
+6522:M 06 Mar 2022 22:37:53.963 * Increased maximum number of open files to 10032 (it was originally set to 1024).
+6522:M 06 Mar 2022 22:37:53.963 * monotonic clock: POSIX clock_gettime
+6522:M 06 Mar 2022 22:37:53.963 * No cluster configuration found, I'm 1c1e07b9302bb8c4cae3c9d535562f0223c198bb
+6522:M 06 Mar 2022 22:37:53.966 * Running mode=cluster, port=4304.
+6522:M 06 Mar 2022 22:37:53.966 # Server initialized
+6522:M 06 Mar 2022 22:37:53.966 # WARNING overcommit_memory is set to 0! Background save may fail under low memory condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the command 'sysctl vm.overcommit_memory=1' for this to take effect.
+6522:M 06 Mar 2022 22:37:53.966 * Ready to accept connections
+6522:M 06 Mar 2022 22:38:08.934 # configEpoch set to 4 via CLUSTER SET-CONFIG-EPOCH
+6522:M 06 Mar 2022 22:38:09.123 # IP address for this node updated to 127.0.0.1
+6522:S 06 Mar 2022 22:38:10.951 * Before turning into a replica, using my own master parameters to synthesize a cached master: I may be able to synchronize with the new master with just a partial transfer.
+6522:S 06 Mar 2022 22:38:10.952 * Connecting to MASTER 127.0.0.1:4301
+6522:S 06 Mar 2022 22:38:10.952 * MASTER <-> REPLICA sync started
+6522:S 06 Mar 2022 22:38:10.952 # Cluster state changed: ok
+6522:S 06 Mar 2022 22:38:10.952 * Non blocking connect for SYNC fired the event.
+6522:S 06 Mar 2022 22:38:10.953 * Master replied to PING, replication can continue...
+6522:S 06 Mar 2022 22:38:10.953 * Trying a partial resynchronization (request 37d13578beca12378135e2c2b48d04cad1fa9b1c:1).
+6522:S 06 Mar 2022 22:38:10.955 * Full resync from master: 19ebc6b9283973535c380d1b79183baea55fd952:0
+6522:S 06 Mar 2022 22:38:10.955 * Discarding previously cached master state.
+6522:S 06 Mar 2022 22:38:11.034 * MASTER <-> REPLICA sync: receiving 175 bytes from master to disk
+6522:S 06 Mar 2022 22:38:11.034 * MASTER <-> REPLICA sync: Flushing old data
+6522:S 06 Mar 2022 22:38:11.034 * MASTER <-> REPLICA sync: Loading DB in memory
+6522:S 06 Mar 2022 22:38:11.037 * Loading RDB produced by version 6.2.6
+6522:S 06 Mar 2022 22:38:11.037 * RDB age 1 seconds
+6522:S 06 Mar 2022 22:38:11.037 * RDB memory usage when created 2.59 Mb
+6522:S 06 Mar 2022 22:38:11.037 # Done loading RDB, keys loaded: 0, keys expired: 0.
+6522:S 06 Mar 2022 22:38:11.037 * MASTER <-> REPLICA sync: Finished with success
+6522:S 06 Mar 2022 22:38:11.037 * Background append only file rewriting started by pid 6544
+6522:S 06 Mar 2022 22:38:11.061 * AOF rewrite child asks to stop sending diffs.
+6544:C 06 Mar 2022 22:38:11.061 * Parent agreed to stop sending diffs. Finalizing AOF...
+6544:C 06 Mar 2022 22:38:11.061 * Concatenating 0.00 MB of AOF diff received from parent.
+6544:C 06 Mar 2022 22:38:11.061 * SYNC append only file rewrite performed
+6544:C 06 Mar 2022 22:38:11.061 * AOF rewrite: 0 MB of memory used by copy-on-write
+6522:S 06 Mar 2022 22:38:11.142 * Background AOF rewrite terminated with success
+6522:S 06 Mar 2022 22:38:11.143 * Residual parent diff successfully flushed to the rewritten AOF (0.00 MB)
+6522:S 06 Mar 2022 22:38:11.143 * Background AOF rewrite finished successfully
+6522:S 06 Mar 2022 22:38:20.442 # Connection with master lost.
+6522:S 06 Mar 2022 22:38:20.442 * Caching the disconnected master state.
+6522:S 06 Mar 2022 22:38:20.442 * Reconnecting to MASTER 127.0.0.1:4301
+6522:S 06 Mar 2022 22:38:20.442 * MASTER <-> REPLICA sync started
+6522:S 06 Mar 2022 22:38:20.442 # Error condition on socket for SYNC: Connection refused
+6522:S 06 Mar 2022 22:38:20.448 # User requested shutdown...
+6522:S 06 Mar 2022 22:38:20.448 * Calling fsync() on the AOF file.
+6522:S 06 Mar 2022 22:38:20.448 * Removing the pid file.
+6522:S 06 Mar 2022 22:38:20.448 # Redis is now ready to exit, bye bye...

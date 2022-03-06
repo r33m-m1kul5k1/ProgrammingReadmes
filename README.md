@@ -1,3 +1,4 @@
+# coding-self-learing
 # Structured Query Language (SQL)
 Tables with rows and colums that can be access with queries.
 ## Setup

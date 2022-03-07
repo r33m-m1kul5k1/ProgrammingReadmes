@@ -22,7 +22,7 @@ Start the 6 servers
 ```Powershell
 .\redis-server.exe --port 7000 --cluster-enabled yes `
 --cluster-config-file node-7000.conf --cluster-node-timeout 2000 `
---appendonly yes --requirepass 12 --masterauth 12
+--appendonly yes --requirepass 12 --masterauth 12 --cluster-require-full-coverage yes
 ```
 Cluster meet them<br>
 node 1 -> meets everyone.

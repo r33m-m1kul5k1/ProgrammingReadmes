@@ -67,6 +67,21 @@ tar xvzf redis-stable.tar.gz
 cd redis-stable
 sudo make install
 ```
+start a clustred server
+```Bash
+redis-server --port 7000 --cluster-enabled yes \
+--cluster-config-file node-7000.conf --cluster-node-timeout 2000 \
+--appendonly yes --requirepass 12 --masterauth 12
+```
+```Bash
+redis-cli -c -a 12 -p 7000 cluster meet 127.0.0.1 7001
+```
+```Bash
+for i in {1..2730}; do redis-cli -p 7000 -a 12 CLUSTER ADDSLOTS $i ; done
+for i in {2731..5461}; do redis-cli -p 7001 -a 12 CLUSTER ADDSLOTS $i ; done
+for i in {5462..8192}; do redis-cli -p 7002 -a 12 CLUSTER ADDSLOTS $i ; done
+```
+
 ### Basic commands
 ```Redis
 set key value

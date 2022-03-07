@@ -56,9 +56,9 @@ node -> replicate<br>
 4 -> 5<br>
 5 -> 6<br>
 6 -> 1<br>
-
+you need to create a new server and meet with it, then replicate the target id to this new server.
 ```Powershell
-.\redis-cli -c -p 7000 -a 12 cluster replicate node2id
+.\redis-cli -c -p 7006 -a 12 cluster replicate 7000id
 ```
 # Redis on linux:
 ```bash

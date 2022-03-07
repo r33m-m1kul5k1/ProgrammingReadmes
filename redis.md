@@ -48,14 +48,14 @@ for ($i=13655; $i -le 16383; $i=$i+1 ) {.\redis-cli.exe -p 7005 -a 12 CLUSTER AD
 .\redis-cli.exe -p 7005 -a 12 CLUSTER ADDSLOTSRANGE 13655 16383
 ```
 Setup slave nodes
-realation:
-node -> replicate
-1 -> 2
-2 -> 3
-3 -> 4
-4 -> 5
-5 -> 6
-6 -> 1
+realation:<br>
+node -> replicate<br>
+1 -> 2<br>
+2 -> 3<br>
+3 -> 4<br>
+4 -> 5<br>
+5 -> 6<br>
+6 -> 1<br>
 
 ```Powershell
 .\redis-cli -c -p 7000 -a 12 cluster replicate node2id

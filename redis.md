@@ -24,7 +24,8 @@ Start the 6 servers
 --cluster-config-file node-7000.conf --cluster-node-timeout 2000 `
 --appendonly yes --requirepass 12 --masterauth 12
 ```
-Cluster meet them
+Cluster meet them<br>
+node 1 -> meets everyone.
 ```Powershell
 .\redis-cli.exe -c -a 12 -p 7000 cluster meet 127.0.0.1 7001
 ```

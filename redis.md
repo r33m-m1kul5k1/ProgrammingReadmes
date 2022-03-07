@@ -10,7 +10,16 @@ cd \redis-dir\
 redis-server --requirepass <secret pass>
 ```
 ```Powershell
-.\redis-server --service-start
+..\redis-server.exe --service-install --port $PORT --cluster-enabled yes `
+--cluster-node-timeout 5000 --appendonly yes `
+--daemonize yes --requirepass $SECERT_PASS --masterauth $SECERT_PASS
+
+# Runs for me...
+.\redis-server.exe --port 7000 --cluster-enabled yes `
+--cluster-config-file nodes-7000.conf --cluster-node-timeout 2000 `
+--appendonly yes --requirepass 12 --masterauth 12
+
+
 # to stop the service
 .\redis-server --service-stop
 # To uninstall

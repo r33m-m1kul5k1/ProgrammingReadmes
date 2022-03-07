@@ -6,27 +6,61 @@ database on the RAM.<br>
 cd \redis-dir\
 # will automatic start the serivce
 .\redis-server --service-install --requirepass <secret pass>
-# linux
-redis-server --requirepass <secret pass>
 ```
 ```Powershell
-..\redis-server.exe --service-install --port $PORT --cluster-enabled yes `
---cluster-node-timeout 5000 --appendonly yes `
---daemonize yes --requirepass $SECERT_PASS --masterauth $SECERT_PASS
-
-# Runs for me...
-.\redis-server.exe --port 7000 --cluster-enabled yes `
---cluster-config-file nodes-7000.conf --cluster-node-timeout 2000 `
---appendonly yes --requirepass 12 --masterauth 12
-
-
-# to stop the service
+# to install
+..\redis-server.exe --service-install 
+# to start 
+..\redis-server.exe --service-start
+# to stop 
 .\redis-server --service-stop
 # To uninstall
 .\redis-server --service-uninstall
 ```
+## Cluster on windows
+Start the 6 servers
+```Powershell
+# Runs for me...
+.\redis-server.exe --port 7000 --cluster-enabled yes `
+--cluster-config-file nodes-7000.conf --cluster-node-timeout 2000 `
+--appendonly yes --requirepass 12 --masterauth 12
+```
+Cluster meet them
+```Powershell
+.\redis-cli.exe -c -a 12 -p 7000 cluster meet 127.0.0.1 7001
+```
+Allocate sharding slots
+```Powershell
+for ($i=0; $i -le 2730; $i=$i+1 ) {.\redis-cli.exe -p 7000 -a 12 CLUSTER ADDSLOTS $i}
+for ($i=2731; $i -le 5461; $i=$i+1 ) {.\redis-cli.exe -p 7001 -a 12 CLUSTER ADDSLOTS $i}
+for ($i=5462; $i -le 8192; $i=$i+1 ) {.\redis-cli.exe -p 7002 -a 12 CLUSTER ADDSLOTS $i}
+for ($i=8193; $i -le 10923; $i=$i+1 ) {.\redis-cli.exe -p 7003 -a 12 CLUSTER ADDSLOTS $i}
+for ($i=10924; $i -le 13654; $i=$i+1 ) {.\redis-cli.exe -p 7004 -a 12 CLUSTER ADDSLOTS $i}
+for ($i=13655; $i -le 16383; $i=$i+1 ) {.\redis-cli.exe -p 7005 -a 12 CLUSTER ADDSLOTS $i}
+```
 
-#### Redis on linux:
+```Powershell
+.\redis-cli.exe -p 7000 -a 12 CLUSTER ADDSLOTSRANGE 0 2730
+.\redis-cli.exe -p 7001 -a 12 CLUSTER ADDSLOTSRANGE 2731 5461 
+.\redis-cli.exe -p 7002 -a 12 CLUSTER ADDSLOTSRANGE 5462 8192
+.\redis-cli.exe -p 7003 -a 12 CLUSTER ADDSLOTSRANGE 8193 10923
+.\redis-cli.exe -p 7004 -a 12 CLUSTER ADDSLOTSRANGE 10924 13654
+.\redis-cli.exe -p 7005 -a 12 CLUSTER ADDSLOTSRANGE 13655 16383
+```
+Setup slave nodes
+realation:
+node -> replicate
+1 -> 2
+2 -> 3
+3 -> 4
+4 -> 5
+5 -> 6
+6 -> 1
+
+```Powershell
+.\redis-cli -c -p 7000 -a 12 cluster replicate node2id
+```
+# Redis on linux:
 ```bash
 wget http://download.redis.io/redis-stable.tar.gz
 tar xvzf redis-stable.tar.gz
@@ -70,7 +104,6 @@ make a config file for each node<br>
 `redis.conf`
 ```
 cluster-enabled yes
-cluster-config-file nodes.conf
 cluster-node-timeout 5000
 appendonly yes
 requirepass 12

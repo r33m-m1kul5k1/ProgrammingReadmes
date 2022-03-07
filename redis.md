@@ -38,7 +38,7 @@ for ($i=8193; $i -le 10923; $i=$i+1 ) {.\redis-cli.exe -p 7003 -a 12 CLUSTER ADD
 for ($i=10924; $i -le 13654; $i=$i+1 ) {.\redis-cli.exe -p 7004 -a 12 CLUSTER ADDSLOTS $i}
 for ($i=13655; $i -le 16383; $i=$i+1 ) {.\redis-cli.exe -p 7005 -a 12 CLUSTER ADDSLOTS $i}
 ```
-The Better way
+The Better way, doesn't work with authN
 ```Powershell
 .\redis-cli.exe -p 7000 -a 12 CLUSTER ADDSLOTSRANGE 0 2730
 .\redis-cli.exe -p 7001 -a 12 CLUSTER ADDSLOTSRANGE 2731 5461 

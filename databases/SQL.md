@@ -1,6 +1,41 @@
 # coding-self-learing
 # Structured Query Language (SQL)
-Tables with rows and colums that can be access with queries.
+Tables with rows and columns that can be access with queries.<br>
+records = rows.<br>
+fields = cloumns.<br>
+DML = data related statements.<br> 
+DDL = databse related statements<br>
+### RDB 
+databases with connections between tables.
+#### Primary Key
+is a filed with unique record in each row. for example ID.
+#### Links
+using the `primary key` and `forgein key`, different tables can be "joined".<br>
+##### Types
+1. one to many: one field to one or more fileds.
+2. many to many: 
+
+
+## Basic statements
+```SQL
+SELECT <cloumn,> FROM <table>
+WHERE condition AND/OR condition...;
+```
+### conditions
+```SQL
+column =/!= 1
+column LIKE "ABC" / "A%" / "A_"
+(_ meaning one random char, % sequence of random chars)
+column IN - exsits inside a list
+column BETWEEN 1 AND 2
+```
+### Filtering and Sorting
+```SQL
+SELECT DISTINCT ...; - without duplicate records
+SELECT FROM ORDER BY column ASC/DESC LIMIT max records OFFSET lookup offset.
+
+```
+
 ## Setup
 Requiremnets:
 1. MySQL installer
@@ -159,4 +194,5 @@ engine = create_engine("mysql+mysqlconnector://<user>:<pass>@<addr>/<schema>",
 ```
 
 
+# SQL in C++
 

@@ -12,11 +12,12 @@ is a filed with unique record in each row. for example ID.
 #### Links
 using the `primary key` and `forgein key`, different tables can be "joined".<br>
 ##### Types
-1. one to many: one field to one or more fileds.
+1. one to many:
 2. many to many: 
+3. one to one:
 
 
-## Basic statements
+## Basic DML statements 
 ```SQL
 SELECT <cloumn,> FROM <table>
 WHERE condition AND/OR condition...;
@@ -29,11 +30,84 @@ column LIKE "ABC" / "A%" / "A_"
 column IN - exsits inside a list
 column BETWEEN 1 AND 2
 ```
+
+#### To Group & SQL functions
+```
+AVG
+COUNT
+FIRST
+LAST
+MIN
+MAX
+ROUND
+SUM
+```
+group duplicate rows then you can do a function on those groups.
+```SQL
+select count(user_id) from albums group by user_id;
+```
+count number of `user_id` groupped row in the row. in the same way you could count(name).<br>
+it doesn't matter, the concept is that the functions operate on a "new" table, with the identical by column rows.
+
 ### Filtering and Sorting
 ```SQL
 SELECT DISTINCT ...; - without duplicate records
 SELECT FROM ORDER BY column ASC/DESC LIMIT max records OFFSET lookup offset.
+```
+### Join
+```SQL
+SELECT column, another_table_column
+FROM mytable
+INNER/LEFT/RIGH/FULL JOIN another_table 
+    ON mytable.id = another_table.id
+```
+**NOTE**: left right and full are if some of the rows does not exsits in the one of the tables.<br>
+ON without on join will connect stuff that have no connection.
 
+### Insertion
+```SQL
+insert into table_name values (), ();
+```
+### update rows
+
+```SQL
+UPDATE mytable
+SET column = value_or_expr, 
+    other_column = another_value_or_expr, 
+    …
+WHERE condition;
+```
+```SQL
+delete from table where...;
+```
+
+### Transactions
+to execute multiple commands at a sequence but if one command isn't successfull then undo all changes.
+```SQL
+begin;
+commands;
+commit;
+```
+alternatives
+```SQL
+rollback - undo changes
+end transaction; = commit
+```
+
+## Basic DDL statements
+```SQL
+CREATE TABLE IF NOT EXISTS mytable (
+    column DataType TableConstraint DEFAULT default_value,
+    another_column DataType TableConstraint DEFAULT default_value,
+    …
+);
+```
+### constrains
+specify a role about the row or the column. For example not null, or unique.
+
+Link between tables using foreign key
+```
+FOREIGN KEY (PersonID)  REFERENCES Persons(PersonID)
 ```
 
 ## Setup
